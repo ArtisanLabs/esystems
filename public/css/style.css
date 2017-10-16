@@ -1,3 +1,21 @@
 html, body{
+    margin-top: 40px;
     color: #ffffff;
+}
+h1, h2, h3, p{
+    color: #ffffff;
+}
+.price {
+    font-size:2.5rem;
+    font-weight:700;
+}
+.image {
+    max-height: 160px;
+}
+.title {
+    font-size:2.3rem;
+    letter-spacing: 4px;
+}
+.description {
+    letter-spacing: 2px;
 }
