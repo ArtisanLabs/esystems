@@ -121,6 +121,12 @@ app.get('/sport', (req, res) => {
         });
     });
 });
+
+//buy route
+app.post('/buy', (req, res,) => {
+    console.log(req.body);
+});
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
