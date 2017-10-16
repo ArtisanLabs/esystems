@@ -9,7 +9,10 @@
                         <p class="description">{{ this.description}}</p>
                         <div class="clearfix">
                             <div class="price pull-left">KES {{ this.price}}</div>
-                            <a href="#" class="btn btn-success btn-lg pull-right" role="button">Purchase Me</a>
+                            <form action="/buy" method="post">
+                                <input type="hidden" name="_id" value="{{ this._id}}">
+                                <button type="submit" class="btn btn-success btn-lg pull-right">Purchase</button>
+                            </form>
                         </div>
                     </div>
                 </div>
