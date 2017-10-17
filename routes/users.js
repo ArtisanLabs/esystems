@@ -1,7 +1,7 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
-
 const router = express.Router();
+
+const User = require('../models/users');
 
 //get signup
 router.get('/signup', (req, res) => {
@@ -15,7 +15,21 @@ router.get('/signin', (req, res) => {
 
 //post sign in
 router.post('/signin', (req, res) => {
-    res.send('user/signin');
+    let newUser = new User({
+        email: req.body.email,
+        password: req.body.password,
+    });
+
+    User.addUser(newUser, (err, user) => {
+        if(err) {
+            return res.json({
+                success: false,
+                msg: 'Failed to add user'
+            });
+        } else {
+            res.redirect('/');
+        }
+    });
 });
 
 //post sign up
