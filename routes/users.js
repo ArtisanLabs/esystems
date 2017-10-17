@@ -14,7 +14,7 @@ router.get('/signin', (req, res) => {
 });
 
 //post sign in
-router.post('/signin', (req, res) => {
+router.post('/signup', (req, res) => {
     let newUser = new User({
         email: req.body.email,
         password: req.body.password,
@@ -33,8 +33,36 @@ router.post('/signin', (req, res) => {
 });
 
 //post sign up
-router.post('/signup', (req, res) => {
-    res.send('user/signin');
+router.post('/signin', (req, res) => {
+    //get data from the login
+    const email = req.body.email;
+    const password  =req.body.password;
+
+    User.getUserByEmail(email, (err, user) => {
+        if(err){
+            res.json({
+                success: false,
+                msg: err
+            });
+        }
+
+        if(!user){
+            res.redirect('/');
+        } else {
+            User.comparePassword(password, user.password, (err, isMatch) => {
+                if(err) {
+                    return res.json({
+                        success: false,
+                        msg: err
+                    });
+                }
+
+                if(isMatch){
+                    return res.redirect('/');
+                }
+            })
+        }
+    })
 });
 
 module.exports = router;
