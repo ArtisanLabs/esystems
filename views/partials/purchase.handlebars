@@ -1,0 +1,16 @@
+<form action="/shop/charge" method="POST">
+    <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key=""
+            data-amount="{{ this.price }}"
+            data-name="{{ this.title}}"
+            data-description="{{ this.description}}"
+            data-image="{{ this.imagePath}}"
+            data-locale="auto">
+    </script>
+    <script>
+        // Hide default stripe button
+        document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
+    </script>
+    <button type="submit" class="btn btn-success btn-lg">Purchase For {{ this.price}}</button>
+</form>

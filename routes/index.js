@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const stripe = require('stripe')('sk_test_6vzGCKFgE70LfjNoj1OttcjR');
 
 const Fashion = require('../models/fashion');
 const Sport = require('../models/sport');
@@ -62,8 +63,20 @@ router.get('/sport', (req, res) => {
 });
 
 //buy route
-router.post('/buy', (req, res,) => {
-    console.log(req.body);
+router.post('/charge', (req, res) => {
+    const amount = 2500;
+
+    stripe.customers.create({
+        email: req.body.stripeEmail,
+        source: req.body.stripeToken
+    })
+        .then(customer => stripe.charges.create({
+            amount,
+            description: 'Web Development Ebook',
+            currency: 'usd',
+            customer: customer.id
+        }))
+        .then(charge => res.render('success'));
 });
 
 module.exports = router;
