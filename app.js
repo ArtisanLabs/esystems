@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const config = require('./config/config');
 const Product = require('./models/product');
 const shop = require('./routes/index');
+const user = require('./routes/users');
 
 //Create DB connection
 mongoose.connect(config.database, {
@@ -64,6 +65,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/shop', shop);
+app.use('/user', user);
 
 const port = process.env.PORT || 3000;
 
