@@ -8,11 +8,8 @@
                         <h3 class="title">{{ this.title}}</h3>
                         <p class="description">{{ this.description}}</p>
                         <div class="clearfix">
-                            <div class="price pull-left">KES {{ this.price}}</div>
-                            <form action="/buy" method="post">
-                                <input type="hidden" name="_id" value="{{ this._id}}">
-                                <button type="submit" class="btn btn-success btn-lg pull-right">Purchase</button>
-                            </form>
+                            <!--<div class="price pull-left">KES {{ this.price}}</div>-->
+                            {{> purchase}}
                         </div>
                     </div>
                 </div>
