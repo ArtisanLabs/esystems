@@ -14,7 +14,7 @@ router.get('/fashion', (req, res) => {
         for( let i = 0; i < docs.length; i += chunkSize) {
             productChunks.push(docs.slice(i, i + chunkSize));
         }
-        res.render('fashion', {
+        res.render('shop/fashion', {
             products: productChunks
         });
     });
@@ -28,7 +28,7 @@ router.get('/electronics', (req, res) => {
         for( let i = 0; i < docs.length; i += chunkSize) {
             productChunks.push(docs.slice(i, i + chunkSize));
         }
-        res.render('electronics', {
+        res.render('shop/electronics', {
             products: productChunks
         });
     });
@@ -42,7 +42,7 @@ router.get('/motor', (req, res) => {
         for( let i = 0; i < docs.length; i += chunkSize) {
             productChunks.push(docs.slice(i, i + chunkSize));
         }
-        res.render('motor', {
+        res.render('shop/motor', {
             products: productChunks
         });
     });
@@ -56,7 +56,7 @@ router.get('/sport', (req, res) => {
         for( let i = 0; i < docs.length; i += chunkSize) {
             productChunks.push(docs.slice(i, i + chunkSize));
         }
-        res.render('sport', {
+        res.render('shop/sport', {
             products: productChunks
         });
     });
